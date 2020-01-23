@@ -3,6 +3,7 @@
 const path = require("path");
 const fp = require("fastify-plugin");
 const AutoLoad = require("fastify-autoload");
+const routes = require("fastify-routes");
 // const compression = require("compression");
 // const compressionConfig = require("./configs/compression.config");
 const connectToPostgresDb = require("./middlewares/connectToPostgresDb");
@@ -34,7 +35,11 @@ module.exports = function(fastify, opts, next) {
       exposedHeaders: ["X-GraphQL-Event-Stream"],
       optionsSuccessStatus: 200
     })
-    .ready(err => fastify.log.error(err));
+    .register(routes)
+    .ready(err => {
+      console.warn(fastify.routes);   // can't see '/schema' from routes
+      fastify.log.error(err);
+    });
   //============================================================================
   // Do not touch the following lines
   //============================================================================

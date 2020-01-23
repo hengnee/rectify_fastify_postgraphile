@@ -25,6 +25,7 @@
     "fastify-cors": "^3.0.1",
     "fastify-env": "^1.0.1",
     "fastify-plugin": "^1.2.0",
+    "fastify-routes": "^2.0.3",
     "postgraphile": "^4.5.5",
     "postgraphile-plugin-connection-filter": "^1.1.3"
   },
